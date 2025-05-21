@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio SMPN 1 Bulagi</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Montserrat:wght@800&display=swap');
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: #f0f4f8; color: #222; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    header { position: fixed; top: 0; left: 0; right: 0; background: #1e40af; box-shadow: 0 4px 12px rgba(30,64,175,0.4); display: flex; align-items: center; padding: 0.7rem 1.5rem; z-index: 10000; }
+    .logo { font-family: 'Montserrat', sans-serif; font-weight: 800; color: #e0e7ff; font-size: 1.6rem; letter-spacing: 3px; text-transform: uppercase; user-select: none; }
+    nav { margin-left: auto; }
+    nav ul { display: flex; gap: 2rem; align-items: center; }
+    nav ul li a { color: #e0e7ff; font-weight: 600; font-size: 1.1rem; padding: 0.5rem 0.8rem; border-radius: 8px; transition: background-color 0.3s ease, transform 0.2s ease; }
+    nav ul li a:hover { background-color: #3b82f6; transform: translateY(-2px); }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; width: 28px; height: 22px; justify-content: space-between; margin-left: 1rem; }
+    .hamburger span { display: block; height: 3px; width: 100%; background: #e0e7ff; border-radius: 2px; transition: transform 0.3s; }
+    .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    section { padding: 7rem 2rem 5rem; width: 100%; }
+    h2.section-title { font-size: 2.75rem; margin-bottom: 0.75rem; text-align: center; color: #1e40af; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; }
+    hr.section-divider { width: 90px; height: 5px; background: linear-gradient(90deg,#3b82f6,#2563eb); border: none; margin: 0 auto 2.5rem; border-radius: 3px; }
+    #beranda { display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; text-align: center; color: white; background: linear-gradient(180deg,rgba(0,0,0,0.6) 0%,rgba(30,64,175,0.8) 100%), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center/cover; }
+    #beranda h1 { font-family: 'Montserrat', sans-serif; font-size: 4rem; margin-bottom: 1rem; letter-spacing: 6px; }
+    #beranda p { font-size: 1.5rem; max-width: 600px; }
+    #tentang { background: #fff; border-radius: 2rem; box-shadow: 0 20px 40px rgba(37,99,235,0.1); padding: 3rem; }
+    #tentang .photo-gallery { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem; margin-top: 2rem; }
+    #tentang .photo-gallery img { width: 100%; height: 140px; object-fit: cover; border-radius: 1rem; }
+    #guru { background: #fff; border-radius: 2rem; box-shadow: 0 20px 40px rgba(37,99,235,0.1); padding: 3rem; }
+    .subjects-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: 1rem; }
+    .subject-card { background: #e0e7ff; padding: 1rem; border-radius: 1rem; text-align: center; font-weight: 700; color: #1e3a8a; }
+    #alur { background: #fff; border-radius: 2rem; box-shadow: 0 20px 40px rgba(37,99,235,0.1); padding: 3rem; }
+    .steps { display: flex; flex-direction: column; gap: 1.5rem; }
+    .step { background: #f0f9ff; padding: 1.5rem; border-left: 6px solid #3b82f6; border-radius: 1rem; }
+    #kontak { background: linear-gradient(135deg,#1e3a8a,#2563eb); color: #e0e7ff; padding: 4rem 2rem; text-align: center; }
+    #kontak .container { max-width: 800px; margin: 0 auto; }
+    .contact-links { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
+    .contact-links a { color: #e0e7ff; font-size: 1.2rem; }
+    footer { background: #1e40af; color: #e0e7ff; text-align: center; padding: 1.5rem 1rem; }
+    @media (max-width:768px) {
+      .hamburger { display: flex; }
+      nav ul { display: none; }
+      nav.open ul { display: flex; flex-direction: column; position: absolute; top: 60px; right: 0; background: #1e40af; width: 200px; padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SMPN 1 BULAGI</div>
+    <nav id="primary-navigation">
+      <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang Sekolah</a></li>
+        <li><a href="#guru">Guru & Pelajaran</a></li>
+        <li><a href="#alur">Alur Pendaftaran</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <section id="beranda">
+    <h1>Selamat Datang di SMPN 1 Bulagi</h1>
+    <p>Membangun Masa Depan Gemilang dengan Pendidikan Berkualitas dan Guru Profesional.</p>
+  </section>
+
+  <section id="tentang">
+    <h2 class="section-title">Tentang Sekolah</h2>
+    <hr class="section-divider"/>
+    <p>Sekolah kami berdiri sejak tahun 1995 dengan visi untuk menciptakan generasi cerdas, berkarakter, dan berbudi pekerti luhur. Kami menyediakan lingkungan belajar yang nyaman dan fasilitas lengkap demi mendukung prestasi siswa.</p>
+    <div class="photo-gallery">
+      <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Guru sedang mengajar di kelas"/>
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Kelompok siswa belajar bersama di luar ruangan"/>
+      <img src="https://images.unsplash.com/photo-1556742400-b5c6c89ba4cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Suasana laboratorium komputer sekolah"/>
+      <img src="https://images.unsplash.com/photo-1573496778091-9fbedba48703?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Ruang kelas modern dengan siswa"/>
+    </div>
+  </section>
+
+   <section id="guru">
+    <h2 class="section-title">Mata Pelajaran</h2>
+    <hr class="section-divider" />
+    <div class="subjects-list">
+      <div class="subject-card">Pendidikan Agama</div>
+      <div class="subject-card">PPKn</div>
+      <div class="subject-card">Bahasa Indonesia</div>
+      <div class="subject-card">Matematika</div>
+      <div class="subject-card">Ilmu Pengetahuan Alam (IPA)</div>
+      <div class="subject-card">Ilmu Pengetahuan Sosial (IPS)</div>
+      <div class="subject-card">Bahasa Inggris</div>
+      <div class="subject-card">Seni Budaya & Prakarya</div>
+      <div class="subject-card">PJOK</div>
+      <div class="subject-card">TIK</div>
+    </div>
+  </section>
+
+  <section id="alur">
+    <h2 class="section-title">Alur Pendaftaran</h2>
+    <hr class="section-divider"/>
+    <div class="steps">
+      <div class="step" data-step="1"><p>Calon siswa mengisi formulir pendaftaran online melalui website.</p></div>
+      <div class="step" data-step="2"><p>Orang tua/wali menyerahkan dokumen persyaratan ke sekolah.</p></div>
+      <div class="step" data-step="3"><p>Calon siswa mengikuti tes seleksi sesuai jadwal yang ditentukan.</p></div>
+      <div class="step" data-step="4"><p>Pengumuman hasil seleksi dan pendaftaran ulang bagi yang lulus.</p></div>
+    </div>
+  </section>
+
+  <section id="kontak">
+    <div class="container">
+      <h2 class="section-title">Kontak Kami</h2>
+      <hr class="section-divider" style="background:linear-gradient(90deg,#bbdefb,#90caf9);height:4px;"/>
+      <div class="contact-links">
+        <a href="https://wa.me/628123456789" target="_blank" rel="noopener"><span class="contact-icon">📱</span>WA</a>
+        <a href="https://instagram.com/sekolahku" target="_blank" rel="noopener"><span class="contact-icon">📸</span>Instagram</a>
+        <a href="https://facebook.com/sekolahku" target="_blank" rel="noopener"><span class="contact-icon">📘</span>Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>&copy; 2024 SMPN 1 Bulagi. Semua hak cipta dilindungi.</footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.getElementById('primary-navigation');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      hamburger.classList.toggle('active');
+      const exp = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!exp));
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(nav.classList.contains('open')){
+          nav.classList.remove('open'); hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
